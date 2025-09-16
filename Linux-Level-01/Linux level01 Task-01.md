@@ -12,7 +12,7 @@ This example shows how to create a custom user **kirsty** on **App Server 2** wi
 
 ```bash
 # 1. SSH into App Server 2
-ssh <username>@<app_server_2_ip>
+ssh steve@stapp02.stratos.xfusioncorp.com
 
 # 2. Create the user 'kirsty' with UID 1027 and custom home directory
 sudo useradd -u 1027 -d /var/www/kirsty -m kirsty
