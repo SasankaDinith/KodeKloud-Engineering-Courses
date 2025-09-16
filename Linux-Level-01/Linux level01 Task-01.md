@@ -1,4 +1,17 @@
-# Create a Custom Apache User
+## Task 01: Create a Custom Apache User
+
+
+In response to heightened security concerns, the xFusionCorp Industries security team has opted for custom Apache users for their web applications. Each user is tailored specifically for an application, enhancing security measures. Your task is to create a custom Apache user according to the outlined specifications: <br/>
+
+a. Create a user named `kirsty` on `App server 2` within the Stratos Datacenter. <br/>  <br/> 
+b. Assign a unique UID `1027` and designate the home directory as `/var/www/kirsty`. <br/> <br/> 
+
+Note: You can find the infrastructure details by clicking on the Details of all Users and Servers button on the top-right section of the page.
+
+---
+
+
+# Answer
 
 In response to heightened security concerns, xFusionCorp Industries requires a dedicated Apache user for each web application.  
 This example shows how to create a custom user **kirsty** on **App Server 2** with a specific UID and home directory.
