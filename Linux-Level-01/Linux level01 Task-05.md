@@ -20,7 +20,7 @@ ssh banner@stapp03
 sudo useradd -e 2024-03-28 javed
 
 # verify that user created or not
-chage -l james or id james
+chage -l james 
 
 ```
 
@@ -28,3 +28,4 @@ chage -l james or id james
 - `useradd` : Command to create a new user.
 - `-e 2024-03-28` : Sets the account expiry date to March 28, 2024.
 - `javed` : Username (in lowercase, as per protocol).
+
