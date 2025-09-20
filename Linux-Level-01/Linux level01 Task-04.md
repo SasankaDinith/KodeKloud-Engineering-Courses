@@ -1,4 +1,5 @@
-# Task 03- Group Creation and User Assignment
+# Task 03- Service User Creation without Home Directory
+
 
 In response to the latest tool implementation at xFusionCorp Industries, the system admins require the creation of a service user account. Here are the specifics: <br/><br/>
 
@@ -27,3 +28,4 @@ id james
 - `-M` : Prevents the creation of a home directory.
 - `useradd` : Adds the user.
 - `mariyam`: The username.
+
