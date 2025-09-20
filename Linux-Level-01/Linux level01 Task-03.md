@@ -1,4 +1,5 @@
-# Task 03- Group Creation and User Assignment
+# Task 03- Linux User Setup with Non-Interactive Shell
+
 
 Create a user named javed with a non-interactive shell on App Server 3.
 
@@ -24,6 +25,7 @@ sudo useradd -s /sbin/nologin javed
 - `sudo` : Runs the command with administrative privileges.
 - `useradd` : Creates a new user.
  - `-s /sbin/nologin` : Sets the shell to a non-interactive shell, preventing the user from logging in interactively.
+
 
 
 
