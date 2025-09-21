@@ -8,7 +8,7 @@ In response to the latest tool implementation at xFusionCorp Industries, the sys
   Note: You can find the infrastructure details by clicking on the Details of all Users and Servers button on the top-right section of the page. <br/><br/>
  ---
 
-## Answer : 
+# Answer : 
 
 To create a user named mariyam on App Server 2 without a home directory, use the following command:
 
@@ -28,4 +28,5 @@ id james
 - `-M` : Prevents the creation of a home directory.
 - `useradd` : Adds the user.
 - `mariyam`: The username.
+
 
