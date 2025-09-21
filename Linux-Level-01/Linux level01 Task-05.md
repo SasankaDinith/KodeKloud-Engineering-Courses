@@ -8,7 +8,7 @@ Note: You can find the infrastructure details by clicking on the Details of all 
 
 ---
 
-## Answer : 
+# Answer : 
 
 To create a temporary user account named javed on App Server 3 in the Stratos Datacenter with an expiry date of 2024-03-28, use the following command:
 
@@ -28,4 +28,5 @@ chage -l james
 - `useradd` : Command to create a new user.
 - `-e 2024-03-28` : Sets the account expiry date to March 28, 2024.
 - `javed` : Username (in lowercase, as per protocol).
+
 
