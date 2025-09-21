@@ -1,4 +1,5 @@
-# Task 10 - 
+# Task 10 - File Permission Correction
+
 
 After conducting a security audit within the Stratos DC, the Nautilus security team discovered misconfigured permissions on critical files.
 To address this, corrective actions are being taken by the production support team. Specifically, the file named `/etc/hostname` 
@@ -48,3 +49,4 @@ mask::r--
 other::r--
 
 ```
+
