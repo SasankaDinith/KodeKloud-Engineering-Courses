@@ -4,7 +4,7 @@ The Nautilus system admins team has rolled out a web UI application for their ba
 
 
 
-- Allow all incoming connections on port 5003/tcp. Ensure the zone is set to public.
+- Allow all incoming connections on port `5003/tcp`. Ensure the zone is set to public.
 
   ---
 
@@ -29,3 +29,4 @@ This will ensure that the web UI application running on port 5003 is accessible 
 
 
 ```
+
