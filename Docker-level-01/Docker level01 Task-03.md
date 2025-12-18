@@ -27,4 +27,5 @@ Step 04: Remove the container
 docker rm kke-container
 ```
 
-## Task is complete !
+## Task is completed !
+
