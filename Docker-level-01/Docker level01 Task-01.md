@@ -57,3 +57,5 @@ Log out and back in for changes to take effect.
 - **Service fails to start**: Check logs using `journalctl -u docker --no-pager`.
 - **Firewall / proxies**: Configure Docker daemon in `/etc/systemd/system/docker.service.d/proxy.conf` if behind a proxy.
 
+## Task is Completed !
+
