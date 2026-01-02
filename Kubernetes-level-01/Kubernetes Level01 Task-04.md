@@ -1,4 +1,5 @@
-## Task01: 
+## Task01: Set Resource Limits in Kubernetes Pods
+
 
 The Nautilus DevOps team has noticed performance issues in some Kubernetes-hosted applications due to resource constraints. To address this, they plan to set limits on resource utilization. Here are the details:
 
@@ -49,3 +50,4 @@ kubectl get pods httpd-pod
 ```
 
 ### Task is Completed !
+
