@@ -16,17 +16,17 @@ Note: The kubectl utility on `jump_host` is configured to operate with the Kuber
 
 Step01: First you need to go to service details as follows
 ```bash
-kubectl descibe deploy nginx-service
+kubectl describe svc nginx-service
 ```
 
 Step02: Then go to the edit mode and change nodeport from `30008` to `32165`
 ``` bash
-kubectl edit deploy nginx-service
+kubectl edit svc nginx-service
 ```
 
 Step03: Then go to the edit mode of deployment
 ``` bash
-kubectl edit svc nginx-deployment
+kubectl edit deploy nginx-deployment
 ```
 
 Step04: Change the replicas count from `1` to `5` and Update the image from `nginx:1.19` to `nginx:latest`
@@ -40,4 +40,5 @@ kubectl get svc nginx-service
 
 
 ### Task is Completed!
+
 
