@@ -34,11 +34,13 @@ Step04: Change the replicas count from `1` to `5` and Update the image from `ngi
 
 Step05: Finally you can check updated deployment and service as running below commands
 ``` bash
+kubectl get pods
 kubectl get deploy  nginx-deployment
 kubectl get svc nginx-service
 ```
-
+Then you can see 5 pods are running, and service port number is changed to 32165 as well.
 
 ### Task is Completed!
+
 
 
