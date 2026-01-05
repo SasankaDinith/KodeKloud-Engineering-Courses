@@ -1,4 +1,4 @@
-## Task11: Update Deployment and Service in Kubernetes
+## Task12: Update Deployment and Service in Kubernetes
 An application deployed on the Kubernetes cluster requires an update with new features developed by the Nautilus application development team. The existing setup includes a deployment named nginx-deployment and a service named nginx-service. Below are the necessary changes to be implemented without deleting the deployment and service:
 
 
@@ -41,6 +41,7 @@ kubectl get svc nginx-service
 Then you can see 5 pods are running, and service port number is changed to 32165 as well.
 
 ### Task is Completed!
+
 
 
 
