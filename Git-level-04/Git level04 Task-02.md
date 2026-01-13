@@ -9,7 +9,7 @@ Click on the Gitea UI button on the top bar. You should be able to access the `G
 a. Create a new git repository `story_news` under `max` user.
 
 
-b. SSH into `storage server` using user `max` and password `Max_pass123` and clone this newly created repository under user max home directory i.e `/home/max`.
+b. SSH into `storage server` using user `max` and password `Max_pass123` and clone this newly created repository under user `max` home directory i.e `/home/max`.
 
 
 c. Copy all files from location `/usr/data` to the repository and `commit/push` your changes to the master branch. The commit message must be `"add stories"` (must be done in single commit).
@@ -27,6 +27,50 @@ Note: For these kind of scenarios requiring changes to be done in a web UI, plea
 
 ## Answer:
 
+Step01: Click on the Gitea UI button on the top bar. Login to Gitea server using username max and password Max_pass123.
+
+Step02: Create a new git repository story_news under max user.
+
+Step03: SSH into storage server using user max and password Max_pass123 and clone this newly created repository under user max home directory
+``` bash
+ssh max@ststor01
+
+git clone: :repository url>
+```
+
+Step04:  Copy all files from location /usr/data to the repository and commit/push your changes to the master branch. 
+``` bash
+sudo scp /usr/data/* /story_news
+
+ls
+
+git commit - "add stories"
+
+git push
+```
+
+Step05:  Create a new branch max_apps from master.
+``` bash
+git branch max_apps
+```
+
+Step06: Switch to newly created branch
+``` bash
+git checkout max_apps
+```
+Step07:  Copy a file story-index-max.txt from location /tmp/stories/ to the repository.
+``` bash
+sudo scp /tmp/stories/story-index-max.txt .
+```
+Step08: After open this .txt file in VI editor chanage Mooose to Mouse. Then Commit and push the changes to the newly created branch. 
+``` bash
+git commit -m "typo fixed for Mooose"
+
+git push
+
+```
+
 
 ### Task is Completed!
+
 
