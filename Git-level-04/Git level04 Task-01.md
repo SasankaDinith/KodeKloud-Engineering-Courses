@@ -13,7 +13,33 @@ Also remember to push your changes once done.
 ---
 
 ## Answer:
+Step01: Login to the Stroage server
+``` bash
+ssh natasha@ststor01
+```
+Step02: go to /usr/src/kodekloudrepos focler
+``` bash
+cd /usr/src/kodekloudrepos
+```
+
+Step: Type 'ls' command and find games folder and switch it
+``` bash
+ls
+
+cd games
+```
+
+Step: rebase the feature branch
+``` bash
+git rebase origin/master
+```
+
+Step: Push to changes
+``` bash
+git push --force-with-lease origin feature
+```
 
 
 ### Task is Completed!
+
 
