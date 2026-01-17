@@ -26,7 +26,7 @@ Step03: View the commite history
 ``` bash
 git log --oneline
 ```
-Step04: Reset the current branch to the hash of the second commie
+Step04: Reset the current branch to the hash of the second commit
 ``` bash
 git reset --hard <commit_hash>
 ```
@@ -37,4 +37,5 @@ git push --force
 
 
 ### Task is Completed!
+
 
