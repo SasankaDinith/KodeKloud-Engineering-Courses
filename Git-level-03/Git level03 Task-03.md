@@ -32,10 +32,11 @@ git reset --hard <commit_hash>
 ```
 Step05: Force push the changes to the remote repository
 ``` bash
-git push --force
+git push origin master --force
 ```
 
 
 ### Task is Completed!
+
 
 
