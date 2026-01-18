@@ -29,7 +29,7 @@ cd ecommerce/
 
 Step04: Check the git branches having this directory
 ``` bash
-git breanch
+git branch
 ```
 Step05: Check the git logs about commits and copy the commit hash of `Update info.txt` commit
 ``` bash
@@ -53,4 +53,5 @@ git push
 
 
 ### Task is Completed!
+
 
