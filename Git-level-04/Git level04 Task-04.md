@@ -15,8 +15,51 @@ Note: Perform this task using the natasha user, and ensure the repository or exi
 
 ## Answer:
 
+Step01: Switch to the Storage Server
+``` bash
+ssh natasha@ststor01
+```
+Step02: Navigate to the Repository
+``` bash
+cd /usr/src/kodekloudrepos/cluster.git
+```
+Step03: Check branches and merge feature Branch into master
+``` bash
+git branch
+
+git checkout master
+
+git merge feature
+```
+
+Step04: Create the post-update Hook, and navigate directory to create post-update file
+``` bash
+sudo vi /opt/cluster.git/hooks/post-update
+```
+
+Step05: Add the following script
+``` bash
+#!/bin/bash
+cd /opt/cluster.git
+tag=release-$(date "+%Y-%m-%d")
+git tag $tag
+```
+
+Step06: Make it executable
+``` bash
+chmod +x /opt/cluster.git/hooks/post-update
+```
+ Step07: Check git status and push changes
+ ``` bash
+git status
+
+git push
+```
+
+
 
 ### Task is Completed!
+
 
 
 
