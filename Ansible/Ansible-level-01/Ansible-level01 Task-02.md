@@ -37,8 +37,3 @@ sudo systemctl status httpd
 ### Task is Completed!
 
 
-
-
-
-
-### Task is Completed!
