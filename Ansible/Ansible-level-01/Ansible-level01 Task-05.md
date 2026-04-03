@@ -15,6 +15,8 @@ Note: Validation will execute the playbook using the command `ansible-playbook -
 
 ---
 
+## Answer:
+
 Step01:  Switch to playbook folder
 ```bash
 cd ansible
