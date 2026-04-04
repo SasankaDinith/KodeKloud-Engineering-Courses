@@ -1,4 +1,4 @@
-## Task01 - 
+## Task01 - Ansible Ping Module Usage
 
 The Nautilus DevOps team is planning to test several Ansible playbooks on different app servers in `Stratos DC`. Before that, some pre-requisites must be met.
 Essentially, the team needs to set up a password-less SSH connection between Ansible controller and Ansible managed nodes.
