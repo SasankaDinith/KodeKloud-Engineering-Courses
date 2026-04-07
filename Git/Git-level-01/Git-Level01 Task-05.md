@@ -1,4 +1,4 @@
-# Task05 : Delete Git Branch
+## Task05 : Delete Git Branch
 
 The Nautilus developers are engaged in active development on  one of the project repositories located at `/usr/src/kodekloudrepos/games/`
 During testing, sevaral test branches were created, and now they require cleanup.
@@ -26,4 +26,4 @@ Step03: Delete the local branch
 git branch -D xfusioncrop_games
 ```
 
-## Task is Completed !
+### Task is Completed !
