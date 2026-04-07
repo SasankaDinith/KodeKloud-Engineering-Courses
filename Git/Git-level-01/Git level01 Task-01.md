@@ -1,4 +1,4 @@
-# Task 01 : Set Up Git Repository on Storage Server
+## Task 01 : Set Up Git Repository on Storage Server
 
 The Nautilus development team has provided requirements to the DevOps team for a new application development project, specifically requesting the establishment of a Git repository. Follow the instructions below to create the Git repository on the Storage server in the Stratos DC: <br/>
 
@@ -7,9 +7,9 @@ Create a bare repository named `/opt/news.git` (ensure exact name usage).<br/>
 
 ---
 
-# Answer
+## Answer
 
-### 1) Install Git via yum
+Step01: Install Git via yum
 ```bash
 
 sudo yum install -y git
@@ -17,7 +17,7 @@ git --version
 
 ```
 
-### 2) Create the bare repository at /opt/news.git
+Step02: Create the bare repository at /opt/news.git
 
 ```bash
 
@@ -28,7 +28,7 @@ sudo mkdir -p /opt/news.git
 sudo git init --bare /opt/news.git
 
 ```
-### 3) Set ownership and permissions (optional)
+Step03: Set ownership and permissions (optional)
 
 ``` bash
 
@@ -37,3 +37,4 @@ sudo chmod -R 775 /opt/news.git
 
 
 ```
+### Task is Completed!
