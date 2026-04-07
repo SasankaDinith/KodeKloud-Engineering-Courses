@@ -1,4 +1,4 @@
-## Task02 - 
+## Task02 - Managing ACLs Using Ansible
 
 There are some files that need to be created on all app servers in `Stratos DC`.
 The Nautilus DevOps team want these files to be owned by user `root` only however, they also want that the app specific user to have a set of permissions on these files.
