@@ -16,22 +16,44 @@ There is a website that needs to be uploaded to `/var/www/html/dba` on `Nautilus
 
 ## Answer:
 
-Step01: 
+Step01: Copy the /tmp/index.html file into stapp02's /tmp location
+```
+scp /tmp/index.html banner@stapp03:/tmp
 ```
 
+Step02: Login app server 03 as root
+```
+ssh banner@stapp03
+
+sudo su
 ```
 
-Step02:
+Step03: Create new folder as /var/www/html/dba
 ```
-```
-
-Step03: 
-```
+sudo mkdir /var/www/html/dba
 ```
 
-Step04:
-```
-```
 
+Step04: Move /tmp/index.html file into that newly created folder
+```
+sudo mv /tmp/index.html /var/www/html/dba
+```
+Step05: Create new user as ammar
+```
+useradd ammar
+```
+Step06: Set that user as htaccess
+```
+htpasswd -c /var/www/html/.htaccess ammar
+```
+Step07: Start and enable the httpd service
+```
+systemctl start httpd
+systemctl enable --now httpd 
+```
+Step08: Check the connection
+```
+curl http://stapp03:80/dba/
+```
 
 ### Task is Completed!
