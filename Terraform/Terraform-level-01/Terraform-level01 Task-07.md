@@ -24,31 +24,38 @@ For this task, create an EC2 instance using `Terraform` with the following requi
 
   Step01: Create a main.tf file
 
-  Step02: Added this terraform configurations into main.tf file
+  Step02: Create ssh key (run below command into terminal)
   ```
-resource "tls_private_key" "devops-kp" {
-  algorithm = "RSA"
-  rsa_bits  = 4096
-}
-
-resource "aws_key_pair" "devops-key" {
-    key_name = "devops-key"
-    public_key = tls_private_key.devops-kp.public_key_openssh
-
-}
-
+  ssh-keygen -t rsa -f devops-kp
+  ```
+  Step03: Added this terraform configurations into main.tf file
+  ```
 resource "aws_instance" "devops-ec2" {
     ami = "ami-0c101f26f147fa7fd"
-    instance_type = "t2.micro"
-    key_name = aws_key_pair.devops-key.key_name
+    instance_type          = "t2.micro"
+    vpc_security_group_ids = [data.aws_security_group.default.id]
+    key_name               = aws_key_pair.devops-kp.key_name
 
     tags = {
         Name = "devops-ec2"
     }
 }
 
+
+resource "aws_key_pair" "devops-kp" {
+    key_name = "devops_kp"
+    public_key = "<your_ssh_key>"
+
+}
+
+data "aws_security_group" "default" {
+    name = "default"
+}
+
+
+
   ```
-Step03: Execute the terraform file 
+Step04: Execute the terraform file 
 ```
 terraform init
 terraform apply
