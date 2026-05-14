@@ -29,3 +29,29 @@ Make sure JupyterLab is running before using the button at the top of the lab.
 ## Answer:
 
 
+Step01: Open the configuration file and modify as follows
+```
+# Jupyter configuration file for the xFusionCorp Industries data science team
+
+c.ServerApp.token = ''
+c.ServerApp.password = ''
+c.ServerApp.disable_check_xsrf = True
+c.ServerApp.root_dir = '/root/notebooks/'
+c.ServerApp.port = 8888
+c.ServerApp.ip = '0.0.0.0'
+```
+
+Step02: Create required directory
+```
+mkdir -p /root/notebooks/
+```
+
+Step03: Start JupyterLab
+```
+source /root/code/ml-env/bin/activate
+jupyter lab --config=/root/code/jupyter_lab_config.py --allow-root --no-browser &
+```
+Step04: Verify it's running -> Click the Jupyter UI button that appered left side in window
+
+
+### Task is Completed!
