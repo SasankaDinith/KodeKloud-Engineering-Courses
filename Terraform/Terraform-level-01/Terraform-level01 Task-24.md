@@ -1,4 +1,4 @@
-## Task24 - 
+## Task24 - Secrets Manager Setup Using Terraform
 
 The Nautilus DevOps team needs to store sensitive data securely using AWS Secrets Manager. They need to create a secret with the following specifications:
 
@@ -39,3 +39,5 @@ terrform init
 terraform plan
 teraaform apply 
 ```
+
+### Task is Completed!
