@@ -12,6 +12,9 @@ The Terraform working directory is `/home/bob/terraform`.
 ## Answer:
 
 Step01: Open the main.tf file and run below command into terminal
+```
+terraform destroy
+```
 
 
 ### Task is Completed!
