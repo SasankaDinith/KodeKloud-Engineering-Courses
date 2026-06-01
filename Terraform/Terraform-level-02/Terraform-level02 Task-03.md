@@ -1,4 +1,4 @@
-## Task03 - 
+## Task03 - Replace Existing EC2 Instance via Terraform
 
 To test resilience and recreation behavior in Terraform, the DevOps team needs to demonstrate the use of the `-replace` option to forcefully recreate an 
 EC2 instance without changing its configuration. Please complete the following tasks:
