@@ -1,4 +1,4 @@
-## Task04 - 
+## Task04 - Deploy Multiple EC2 Instances with Terraform
 
 The Nautilus DevOps team wants to provision multiple EC2 instances in AWS using Terraform. Each instance should follow a consistent naming convention and be 
 deployed using a modular and scalable setup.
