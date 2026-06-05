@@ -67,7 +67,7 @@ kubectl apply -f pod.yaml
 
 Step04: Exec into the first container and create file as blog.txt with the content Welcome to xFusionCorp Industries under the mounted path of first container i.e /tmp/blog.
 ```
-kubectl exec -it volume-share-datacenter -c volume-container-datacenter-1 --sh -c "echo 'Welcome to xFusionCorp Industries' > /tmp/blog/blog.txt"
+kubectl exec -it volume-share-datacenter -c volume-container-datacenter-1 -- sh -c "echo 'Welcome to xFusionCorp Industries' > /tmp/blog/blog.txt"
 ```
 
 Step05: Check the second container's /tmp/clutser location having blog.txt file 
