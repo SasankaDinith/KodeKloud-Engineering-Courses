@@ -16,3 +16,39 @@ Also, do not attempt to delete or modify any other existing components, such as 
 
 `Note:` The `kubectl` utility on the `jump-host` has been configured to work with the Kubernetes cluster.
 
+## Answer:
+
+Step01: Check the servives of Kubernetes environment
+```
+kubectl get svc
+```
+
+Step02: Open the "lamp-service" service in edit mode, and edit it's NodePort as 30008
+```
+kubectl edit svc lamp-service
+```
+
+Step03: Check the environment varibales based on MYSQL
+```
+kubectl exec -it <pod_name> -c <container_name> -- env | grep MYSQL
+```
+
+Step04: Login to the container as shell
+```
+kubectl exec -it <pod_name> -c <container_name> -- sh
+```
+Step05: Go to the /app folder and open the index.php file
+```
+cd /app
+cat index.php
+```
+
+Step06: Open the index.php file and modify it's env variables
+```
+vi index.php
+```
+Step07: Click the App button appered on Terminal and you can it shows "Connected Sucessfully"
+
+
+### Task is Completed!
+
