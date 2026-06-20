@@ -37,9 +37,182 @@ b) You should be able to access the `index.php` file through NodePort `30008`. U
 
 ## Answer
 
-Step01: 
+Step01: Create php-config.yaml
 ```
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: php-config
+data:
+  php.ini: |
+    variables_order = "EGPCS"
+```
+Step02: Execute the php-config.yaml file
+```
+kubectl apply -f php-config.yaml
 ```
 
+Step03: Create lamp-wp.yaml
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lamp-wp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lamp
+  template:
+    metadata:
+      labels:
+        app: lamp
+    spec:
+      containers:
+
+      - name: httpd-php-container
+        image: webdevops/php-apache:alpine-3-php7
+        ports:
+        - containerPort: 80
+
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-root-pass
+              key: password
+
+        - name: MYSQL_DATABASE
+          valueFrom:
+            secretKeyRef:
+              name: mysql-db-url
+              key: database
+
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: mysql-user-pass
+              key: username
+
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-user-pass
+              key: password
+
+        - name: MYSQL_HOST
+          valueFrom:
+            secretKeyRef:
+              name: mysql-host
+              key: host
+
+        volumeMounts:
+        - name: php-config-volume
+          mountPath: /opt/docker/etc/php/php.ini
+          subPath: php.ini
+
+      - name: mysql-container
+        image: mysql:5.6
+
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-root-pass
+              key: password
+
+        - name: MYSQL_DATABASE
+          valueFrom:
+            secretKeyRef:
+              name: mysql-db-url
+              key: database
+
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: mysql-user-pass
+              key: username
+
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-user-pass
+              key: password
+
+        - name: MYSQL_HOST
+          valueFrom:
+            secretKeyRef:
+              name: mysql-host
+              key: host
+
+      volumes:
+      - name: php-config-volume
+        configMap:
+          name: php-config
+```
+
+Step04: Execute the lamp-wp.yaml
+```
+kubectl apply -f lamp-wp.yaml
+```
+
+Step05: Create service1.yaml
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: lamp-service
+spec:
+  type: NodePort
+  selector:
+    app: lamp
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30008
+```
+
+Step06: Execute the service1.yaml file
+```
+kubectl apply -f service1.yaml
+```
+
+Step07: Create service2.yaml
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+spec:
+  selector:
+    app: lamp
+  ports:
+  - port: 3306
+    targetPort: 3306
+```
+Step08: Execute the service2.yaml file
+```
+kubectl apply -f service2.yaml
+```
+
+Step09: Copy index.php to httpd container under /app directory
+```
+kubectl cp /tmp/index.php lamp-wp-6f8b7df9d4-abcde:/app/index.php -c httpd-php-container
+```
+Step10: Edit index.php
+```
+kubectl exec -it lamp-wp-6f8b7df9d4-abcde -c httpd-php-container -- sh
+
+vi /app/index.php
+```
+
+Step11: Verify the connectivity
+```
+get Node ip: kubectl get nodes -o wide
+Test: curl http://<NODE-IP>:30008/index.php
+or,
+
+Click the website button right side on lab screen and you can see "Connected successfully" as output.
+```
 
 ### Task is Completed!
