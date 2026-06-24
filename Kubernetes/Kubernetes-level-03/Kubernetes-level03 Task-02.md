@@ -207,12 +207,18 @@ vi /app/index.php
 ```
 
 Step11: Verify the connectivity
-```
-get Node ip: kubectl get nodes -o wide
-Test: curl http://<NODE-IP>:30008/index.php
-or,
 
-Click the website button right side on lab screen and you can see "Connected successfully" as output.
+Get Node ip:
+```
+kubectl get nodes -o wide
+```
+Test:
+```
+curl http://<NODE-IP>:30008/index.php
+```
+or:
+```
+Click the website button on the right side of the lab screen, and you will see 'Connected successfully' as the output."
 ```
 
 ### Task is Completed!
