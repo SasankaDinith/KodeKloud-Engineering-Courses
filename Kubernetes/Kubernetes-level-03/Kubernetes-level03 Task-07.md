@@ -173,63 +173,35 @@ Step04: Execute the deployment.yaml file
 ```
 kubectl apply -f deployment.yaml
 ```
-Step05: Create svc1.yaml file and added this content to it
+Step05: Expose the above deployment as Nodeport service type
 ```
-apiVersion: v1
-kind: Service
-metadata:
-  name: lemp-service
-spec:
-  type: NodePort
-  selector:
-    app: lemp-service
-  ports:
-    - port: 80
-      nodePort: 30008
-      targetPort: 80
+kubectl expose deployment lemp-wp --type=NodePort --name=lemp-service --port=80
 ```
-Step06: Execute the svc1.yaml file
+Step06: Expose the above deployment as mysql service
 ```
-kubectl apply -f svc1.yaml
+kubectl expose deployment lemp-wp --type=ClusterIP --name=mysql-service --port=3306
 ```
-Step07:  Create svc1.yaml file and added this content to it
-```
-apiVersion: v1
-kind: Service
-metadata:
-  name: mysql-service
-spec:
-  type: ClusterIP
-  selector:
-    app: lemp-app
-  ports:
-    - port: 3306
-      targetPort: 3306
-```
-Step08: Execute the svc2.yaml file
-```
-kubectl apply -f svc2.yaml
-```
-Step09: Copy /tmp/index.php file into above created pod's nginx container under the /app location
+
+Step07: Copy /tmp/index.php file into above created pod's nginx container under the /app location
 ```
 kubectl cp /tmp/index.php <pod_name>:/app/index.php -c nginx-php-container
 ```
-Step10: Login to that nginx container
+Step08: Login to that nginx container
 ```
 kubectl exec -it <pod_name> -- sh
 ```
-Step11: Switch to /app directory and verify it's having copied index.php file
+Step09: Switch to /app directory and verify it's having copied index.php file
 ```
 cd /app
 ls
 ```
-Step12: Modify index.php file
+Step10: Modify index.php file
 ```
 <?php
-$dbname = $_ENV['MYSQL_DATABASE']
-$dbuser = $_ENV['MYSQL_USER']
-$dbpass = $_ENV['MYSQL_PASSWORD']
-$dbhost = $_ENV['MYSQL_HOST']
+$dbname = $_ENV['MYSQL_DATABASE'];
+$dbuser = $_ENV['MYSQL_USER'];
+$dbpass = $_ENV['MYSQL_PASSWORD'];
+$dbhost = $_ENV['MYSQL_HOST'];
 
 $connect = mysqli_connect($dbhost, $dbuser, $dbpass) or die("Unable to Connect to '$dbhost'");
 
@@ -241,9 +213,9 @@ if ($result->connect_error) {
 }
   echo "Connected successfully";
 ```
-Step13: Save and exit the editor
+Step11: Save and exit the editor
 
-Step14: Click the Website button appered on right side lab screen, you can see output as "Connected successfully"
+Step12: Click the Website button appered on right side lab screen, you can see output as "Connected successfully"
 
 
 ### Task is Completed!
