@@ -49,7 +49,6 @@ metadata:
   name: redis-deployment
   labels:
     app: redis
-# This section ensures exactly 1 replica is maintained
 spec:
   replicas: 1
   selector:
@@ -69,10 +68,8 @@ spec:
           requests:
             cpu: "1"
         volumeMounts:
-        # Mount path for the empty directory volume
         - name: data
           mountPath: /redis-master-data
-        # Mount path for the ConfigMap volume
         - name: redis-config
           mountPath: /redis-master
       volumes:
