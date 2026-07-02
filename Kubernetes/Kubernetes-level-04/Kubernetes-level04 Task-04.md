@@ -36,14 +36,16 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: drupal-mysql-pv
+  labels:
+    type: local
 spec:
+  storageClassName: manual
   capacity:
     storage: 5Gi
   accessModes:
     - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
   hostPath:
-    path: "/drupal-mysql-data"
+    path: /drupal-mysql-data
 ```
 Step02: Execute the pv.yaml file
 ```
@@ -56,11 +58,12 @@ kind: PersistentVolumeClaim
 metadata:
   name: drupal-mysql-pvc
 spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
   resources:
     requests:
       storage: 3Gi
-  accessModes:
-    - ReadWriteOnce
 ```
 Step04: Execute the pvc.yaml file
 ```
@@ -73,30 +76,34 @@ kind: Deployment
 metadata:
   name: drupal-mysql
   labels:
-    app: drupal-mysql
+    app: mysql
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: drupal-mysql
+      app: mysql
   template:
     metadata:
       labels:
-        app: drupal-mysql
+        app: mysql
     spec:
-      containers:
-        - name: mysql
-          image: mysql:5.7
-          env:
-            - name: MYSQL_ROOT_PASSWORD
-              value: "rootpassword" # Required for MySQL initialization
-          volumeMounts:
-            - name: mysql-persistent-storage
-              mountPath: /var/lib/mysql
       volumes:
-        - name: mysql-persistent-storage
+        - name: drupal-mysql-vol
           persistentVolumeClaim:
             claimName: drupal-mysql-pvc
+      containers:
+      - name: mysql
+        image: mysql:5.7
+        volumeMounts:
+          - mountPath: /var/lib/mysql
+            name: drupal-mysql-vol
+        ports:
+        - containerPort: 3306
+        env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: root_password
+            - name: MYSQL_DATABASE
+              value: drupal-database
 ```
 Step06: Execute the deployment1.yaml file
 ```
@@ -121,8 +128,10 @@ spec:
         app: drupal
     spec:
       containers:
-        - name: drupal
-          image: drupal:8.6
+      - name: drupal
+        image: drupal:8.6
+        ports:
+        - containerPort: 80
 ```
 Step08: Execute the deployment2.yaml file
 ```
@@ -137,12 +146,10 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: drupal-app
+     app: drupal
   ports:
-    - protocol: TCP
-      port: 80
+    - port: 80
       nodePort: 30095
-      targetPort: 80
 
 ---
 
@@ -153,10 +160,12 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: drupal-mysql
+     app: mysql
   ports:
-    - port: 3306
-      targetPort: 3306
+     - name: mysql
+       protocol: TCP
+       port: 3306
+       targetPort: 3306
 ```
 Step10: Execute the services.yaml file
 ```
